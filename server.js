@@ -4,6 +4,9 @@ const fs = require('fs');
 
 var app = express();
 
+// port is filled out by Heroku, otherwise 3000
+const port = process.env.PORT || 3000;
+
 hbs.registerPartials(__dirname + '/views/partials')
 app.set('view engine', 'hbs');
 
@@ -83,7 +86,7 @@ app.get('/bad', (req, res) => {
 // 3000 is common port for developing locally
 // in cmd start nodemon to access the port
 // in browser, type localhost:3000
-app.listen(3000, () => {
+app.listen(port, () => {
     // something to do once it is up and running
-    console.log('Server is up and running on port 3000!');
+    console.log(`Server is up and running on port ${port}!`);
 });
